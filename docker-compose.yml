@@ -10,12 +10,12 @@ services:
       - ./docker/mysql/initdb.d:/docker-entrypoint-initdb.d
     environment:
       - MYSQL_ROOT_PASSWORD=${DB_PASS}
-#      - MYSQL_DATABASE=${DB_NAME}
-#      - MYSQL_USER=${DB_USER}
-#      - MYSQL_PASSWORD=${DB_PASS}
       - TZ=${TZ}
     ports:
       - ${DB_PORT}:3306
-
 volumes:
   db-store:
+networks:
+  default:
+    external:
+      name: mynw
